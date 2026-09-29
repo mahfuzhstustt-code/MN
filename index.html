@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>For Noshin ❤️</title>
+
+<style>
+    * {
+        box-sizing: border-box;
+    }
+
+    body {
+        margin: 0;
+        min-height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background: linear-gradient(135deg, #ffe6f0, #fff5f8);
+        font-family: Arial, sans-serif;
+        overflow: hidden;
+    }
+
+    .card {
+        width: 90%;
+        max-width: 420px;
+        background: white;
+        padding: 30px 20px;
+        border-radius: 25px;
+        text-align: center;
+        box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        position: relative;
+    }
+
+    h1 {
+        color: #e91e63;
+        margin-bottom: 10px;
+    }
+
+    p {
+        color: #555;
+        line-height: 1.6;
+    }
+
+    /* Cute CSS Picture */
+    .cute {
+        width: 170px;
+        height: 150px;
+        margin: 10px auto 20px;
+        position: relative;
+    }
+
+    .heart {
+        position: absolute;
+        font-size: 65px;
+        left: 52px;
+        top: 25px;
+        animation: beat 1s infinite;
+    }
+
+    .bear {
+        position: absolute;
+        font-size: 65px;
+        left: 52px;
+        top: 75px;
+    }
+
+    @keyframes beat {
+        0%,100% { transform: scale(1); }
+        50% { transform: scale(1.18); }
+    }
+
+    .buttons {
+        margin-top: 25px;
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        position: relative;
+        min-height: 55px;
+    }
+
+    button {
+        border: none;
+        padding: 13px 28px;
+        border-radius: 30px;
+        font-size: 17px;
+        cursor: pointer;
+        transition: 0.2s;
+    }
+
+    #yes {
+        background: #e91e63;
+        color: white;
+    }
+
+    #no {
+        background: #eeeeee;
+        color: #444;
+    }
+
+    #message {
+        display: none;
+        margin-top: 20px;
+        color: #e91e63;
+        font-size: 19px;
+        font-weight: bold;
+    }
+
+    .small {
+        font-size: 13px;
+        color: #999;
+    }
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="cute">
+        <div class="heart">❤️</div>
+        <div class="bear">🧸</div>
+    </div>
+
+    <h1>Noshin ❤️</h1>
+
+    <p>
+        I have a little question for you...
+        <br><br>
+        Will you be my special person
+        and stay by my side? 🌸
+    </p>
+
+    <p class="small">
+        Think carefully before choosing 😌
+    </p>
+
+    <div class="buttons">
+        <button id="yes" onclick="yesAnswer()">YES ❤️</button>
+        <button id="no" onclick="noAnswer()">NO 🙈</button>
+    </div>
+
+    <div id="message">
+        Yaaaay! 🥹❤️<br><br>
+        You just made my heart the happiest! 🌸<br>
+        I promise to always care for you. 💕
+        <br><br>
+        — Mahfuz ❤️
+    </div>
+
+</div>
+
+<script>
+
+let noCount = 0;
+
+function yesAnswer() {
+    document.getElementById("message").style.display = "block";
+
+    document.getElementById("yes").style.display = "none";
+    document.getElementById("no").style.display = "none";
+
+    createHearts();
+}
+
+function noAnswer() {
+
+    noCount++;
+
+    const noButton = document.getElementById("no");
+
+    if (noCount < 4) {
+
+        noButton.style.position = "fixed";
+
+        const x = Math.random() * (window.innerWidth - 120);
+        const y = Math.random() * (window.innerHeight - 60);
+
+        noButton.style.left = x + "px";
+        noButton.style.top = y + "px";
+
+    } else {
+
+        noButton.innerHTML = "Okay... 🥺";
+    }
+}
+
+function createHearts() {
+
+    for (let i = 0; i < 30; i++) {
+
+        const heart = document.createElement("div");
+
+        heart.innerHTML = "❤️";
+
+        heart.style.position = "fixed";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.bottom = "-20px";
+        heart.style.fontSize = (15 + Math.random() * 25) + "px";
+        heart.style.transition = "4s";
+
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+            heart.style.bottom = "100vh";
+            heart.style.transform =
+                "translateX(" + (Math.random()*200-100) + "px)";
+        }, 100);
+
+        setTimeout(() => {
+            heart.remove();
+        }, 4500);
+    }
+}
+
+</script>
+
+</body>
+</html>
